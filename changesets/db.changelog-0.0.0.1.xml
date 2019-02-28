@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog/1.9" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog/1.9
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-1.9.xsd"> 
+
+    <changeSet author="juanPabloSaucedo" id="20190228-1">
+        <createTable tableName="ALBUM">
+        	<column name="ID_ALBUM" type="INT">
+                <constraints nullable="false" primaryKey="true" unique="false"/>
+            </column>
+            <column name="ALBUM_NAME" type="VARCHAR(30)"/>
+            <column name="YEAR" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190228-2">
+        <createTable tableName="GENRE">
+        	<column name="ID_GENRE" type="INT">
+                <constraints nullable="false" primaryKey="true" unique="false"/>
+            </column>
+            <column name="TYPE" type="VARCHAR(30)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190228-3">
+        <createTable tableName="ARTIST">
+            <column name="ID_ARTIST" type="INT">
+                <constraints nullable="false" primaryKey="true" unique="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(50)"/>
+            <column name="LAST_NAME" type="VARCHAR(50)"/>
+            <column name="SEX" type="VARCHAR(1)"/>
+            <column name="PASSWORD" type="VARCHAR(50)"/>
+            <column name="AGE" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190228-4">
+        <createTable tableName="SONG">
+            <column name="ID_SONG" type="INT">
+                <constraints nullable="false" primaryKey="true" unique="false"/>
+            </column>
+            <column name="TITLE" type="VARCHAR(50)"/>
+            <column name="DURATION" type="INT"/>
+            <column name="ALBUM_ID" type="INT"/>
+            <column name="GENRE_ID" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190228-5">
+        <createTable tableName="JUNCTION_SONG_ARTIST">
+            <column name="SONG_ID" type="INT"/>
+            <column name="ARTIST_ID" type="INT"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190228-6">
+        <addForeignKeyConstraint baseColumnNames="ALBUM_ID"
+            baseTableName="SONG"
+            constraintName="fk_album"
+            referencedColumnNames="ID_ALBUM"
+            referencedTableName="ALBUM"/>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190228-7">
+        <addForeignKeyConstraint baseColumnNames="GENRE_ID"
+            baseTableName="SONG"
+            constraintName="fk_genre"
+            referencedColumnNames="ID_GENRE"
+            referencedTableName="GENRE"/>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190228-8">
+        <addForeignKeyConstraint baseColumnNames="SONG_ID"
+            baseTableName="JUNCTION_SONG_ARTIST"
+            constraintName="fk_song"
+            referencedColumnNames="ID_SONG"
+            referencedTableName="SONG"/>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190228-9">
+        <addForeignKeyConstraint baseColumnNames="ARTIST_ID"
+            baseTableName="JUNCTION_SONG_ARTIST"
+            constraintName="fk_artist"
+            referencedColumnNames="ID_ARTIST"
+            referencedTableName="ARTIST"/>
+    </changeSet>
+
+    <changeSet author="juanPabloSaucedo" id="20190224-">
+    <addPrimaryKey 
+            columnNames="SONG_ID,ARTIST_ID"
+            constraintName="pk_song_artist"
+            tableName="JUNCTION_SONG_ARTIST"/>
+    </changeSet>
+
+</databaseChangeLog>
+ 
