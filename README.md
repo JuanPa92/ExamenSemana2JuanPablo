@@ -12,4 +12,4 @@ Para el patrón de de diseño elegí el de observer y chain of responsability.
 
 
 
-![alt text](https://refactoring.guru/images/patterns/diagrams/singleton/structure.png)
+![alt text](https://github.com/JuanPa92/ExamenSemana2JuanPablo/blob/master/Diagrama.png?raw=true)
