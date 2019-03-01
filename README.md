@@ -10,6 +10,6 @@ Para el patrón de de diseño elegí el de observer y chain of responsability.
 
 ## Diagrama
 
-
+En el diagrama podemos observar que el cliente genera un pago por lo que el observable Payment puede mandar una notificación para que el handler autorice la canción al servicio de streaming apropiado.
 
 ![alt text](https://github.com/JuanPa92/ExamenSemana2JuanPablo/blob/master/Diagrama.png?raw=true)
