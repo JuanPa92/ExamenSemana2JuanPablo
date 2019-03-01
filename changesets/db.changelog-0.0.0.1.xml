@@ -88,7 +88,7 @@
             referencedTableName="ARTIST"/>
     </changeSet>
 
-    <changeSet author="juanPabloSaucedo" id="20190224-">
+    <changeSet author="juanPabloSaucedo" id="20190228-10">
     <addPrimaryKey 
             columnNames="SONG_ID,ARTIST_ID"
             constraintName="pk_song_artist"
